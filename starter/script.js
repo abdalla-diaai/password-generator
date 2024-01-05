@@ -88,16 +88,25 @@ var upperCasedCharacters = [
     'Z'
 ];
 
+
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-    var numOption = prompt("How many numbers do you need?");
-    var charOption = prompt("How many characters do you need?");
-    var upperOption = prompt("How many capital letters do you need?");
-    var lowerOption = prompt("How many small letters do you need?");
-    return numOption, charOption, upperOption, lowerOption;
-};
+    var optionsArr = {
+        "numOptions": 0,
+        "charOptions": 0,
+        "upperOptions": 0,
+        "smallOptions": 0,
+    };
 
-console.log(getPasswordOptions());
+    optionsArr.numOptions = Number(prompt("How many numbers do you need?"));
+    optionsArr.charOptions = Number(prompt("How many characters do you need?"));
+    optionsArr.upperOptions = Number(prompt("How many capital letters do you need?"));
+    optionsArr.smallOptions = Number(prompt("How many small letters do you need?"));
+
+    return optionsArr;
+};
+console.log(getPasswordOptions())
 
 // Function for getting a random element from an array
 function getRandom(arr) {
