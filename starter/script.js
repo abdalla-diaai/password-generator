@@ -88,6 +88,7 @@ var upperCasedCharacters = [
     'Z'
 ];
 
+const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
 
 // Function to prompt user for password options
@@ -103,15 +104,21 @@ function getPasswordOptions() {
     optionsArr.charOptions = Number(prompt("How many characters do you need?"));
     optionsArr.upperOptions = Number(prompt("How many capital letters do you need?"));
     optionsArr.smallOptions = Number(prompt("How many small letters do you need?"));
-
-    return optionsArr;
+    if (sumValues(optionsArr) < 8 || sumValues(optionsArr) > 128) {
+        alert("number of characters must be more than 8 and no more than 128.");
+    }
+    else {
+        return optionsArr;
+    }
 };
-console.log(getPasswordOptions())
+// console.log(getPasswordOptions())
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+var randomIndex = Math.floor(Math.random() * arr.length);
+return arr[randomIndex];
+};
 
-}
 
 // Function to generate password with user input
 function generatePassword() {
