@@ -108,7 +108,6 @@ function getPasswordOptions() {
     return { numOptions, charOptions, upperOptions, smallOptions };
 };
 
-console.log(getPasswordOptions())
 
 // Function for getting a random element from an array
 // work mainly by getting random index then returnning corresponding element from array
@@ -117,52 +116,76 @@ function getRandom(arr) {
     return arr[randomIndex];
 };
 
-function shuffle (myString) {
-var a = myString.split(''),
-    n = a.length;
+function shuffle(myString) {
+    var a = myString.split(''),
+        n = a.length;
 
-for(var i = n - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+    for (var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join('');
 }
-return a.join('');
+
+
+function checkPassWordOptions(obj) {
+    var check = 0;
+    for (let value of Object.values(obj)) {
+        if (value == 0) {
+            check += 1;
+        }
+    }
+    if (check == 4) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
+
 
 // Function to generate password with user input
 function generatePassword() {
     var passwordOptions = getPasswordOptions();
-    var passWord = ""
-    for (const [key, value] of Object.entries(passwordOptions)) {
-        if (value > 0 && key == "numOptions") {
-            for (var i = 0; i < value; i++) {
-                passWord += getRandom(numericCharacters);
+    if (checkPassWordOptions(passwordOptions)) {
+        var passWord = ""
+        for (const [key, value] of Object.entries(passwordOptions)) {
+            if (value > 0 && key == "numOptions") {
+                for (var i = 0; i < value; i++) {
+                    passWord += getRandom(numericCharacters);
+                }
+            }
+            if (value > 0 && key == "charOptions") {
+                for (var i = 0; i < value; i++) {
+                    passWord += getRandom(specialCharacters);
+                }
+            }
+            if (value > 0 && key == "upperOptions") {
+                for (var i = 0; i < value; i++) {
+                    passWord += getRandom(upperCasedCharacters);
+                }
+            }
+            if (value > 0 && key == "smallOptions") {
+                for (var i = 0; i < value; i++) {
+                    passWord += getRandom(lowerCasedCharacters);
+                }
             }
         }
-        if (value > 0 && key == "charOptions") {
-            for (var i = 0; i < value; i++) {
-                passWord += getRandom(specialCharacters);
-            }
+        if (passWord.length > 8 && passWord.length < 128) {
+            return shuffle(passWord);
         }
-        if (value > 0 && key == "upperOptions") {
-            for (var i = 0; i < value; i++) {
-                passWord += getRandom(upperCasedCharacters);
-            }
+        else {
+            alert("Password must be at least 8 characters but no more than 128.");
+            return;
         }
-        if (value > 0 && key == "smallOptions") {
-            for (var i = 0; i < value; i++) {
-                passWord += getRandom(lowerCasedCharacters);
-            }
-        }
-    }
-    if (passWord.length > 8 && passWord.length < 128){
-        return shuffle(passWord);
     }
     else {
-        alert("Password must be at least 8 characters but no more than 128.");
+        alert("At least one character type should be selected.");
         return;
     }
+
 }
 
 // console.log(generatePassword())
