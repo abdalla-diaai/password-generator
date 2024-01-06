@@ -88,17 +88,6 @@ var upperCasedCharacters = [
     'Z'
 ];
 
-// function to get sum of all values 
-const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
-
-function optionsAlert(passOption) {
-    if (passOption == 0) {
-        alert("at least one character type should be selected");
-    }
-    else {
-        return;
-    };
-};
 // Function to prompt user for password options
 function getPasswordOptions() {
     var numOptions = Number(prompt("How many numbers do you need?"));
@@ -108,28 +97,14 @@ function getPasswordOptions() {
     return { numOptions, charOptions, upperOptions, smallOptions };
 };
 
-
 // Function for getting a random element from an array
-// work mainly by getting random index then returnning corresponding element from array
+// Function gets first random index then returnning corresponding element from array
 function getRandom(arr) {
     var randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
 };
 
-function shuffle(myString) {
-    var a = myString.split(''),
-        n = a.length;
-
-    for (var i = n - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-    return a.join('');
-}
-
-
+// Function to check the password options to confirm essential criteria
 function checkPassWordOptions(obj) {
     var check = 0;
     for (let value of Object.values(obj)) {
@@ -145,50 +120,64 @@ function checkPassWordOptions(obj) {
     }
 }
 
+// function to shuffle password after generation
+function shuffle(myString) {
+    var a = myString.split(''),
+        n = a.length;
+    for (var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join('');
+}
 
 // Function to generate password with user input
 function generatePassword() {
     var passwordOptions = getPasswordOptions();
+    // validate options, at least one type character, chosen for password
     if (checkPassWordOptions(passwordOptions)) {
-        var passWord = ""
+        var passWord = "";
         for (const [key, value] of Object.entries(passwordOptions)) {
-            if (value > 0 && key == "numOptions") {
+            if (key == "numOptions") {
                 for (var i = 0; i < value; i++) {
                     passWord += getRandom(numericCharacters);
                 }
             }
-            if (value > 0 && key == "charOptions") {
+            if (key == "charOptions") {
                 for (var i = 0; i < value; i++) {
                     passWord += getRandom(specialCharacters);
                 }
             }
-            if (value > 0 && key == "upperOptions") {
+            if (key == "upperOptions") {
                 for (var i = 0; i < value; i++) {
                     passWord += getRandom(upperCasedCharacters);
                 }
             }
-            if (value > 0 && key == "smallOptions") {
+            if (key == "smallOptions") {
                 for (var i = 0; i < value; i++) {
                     passWord += getRandom(lowerCasedCharacters);
                 }
             }
         }
+        // final check for password -- pass
         if (passWord.length > 8 && passWord.length < 128) {
             return shuffle(passWord);
         }
+        // alert for no pass password
         else {
             alert("Password must be at least 8 characters but no more than 128.");
-            return;
+            return "Invalid Password.";
         }
     }
+    // error message for no characters chosen
     else {
         alert("At least one character type should be selected.");
-        return;
+        return "Invalid Password.";
     }
 
 }
-
-// console.log(generatePassword())
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -203,3 +192,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
