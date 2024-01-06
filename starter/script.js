@@ -175,7 +175,7 @@ function generatePassword() {
     if (checkPassWordOptions(passwordOptions)) {
         var passWord = iterateObj(passwordOptions);
         // final check for password -- pass
-        if (passWord.length > 8 && passWord.length < 128) {
+        if (passWord.length >= 8 && passWord.length < 128) {
             return shuffle(passWord);
         }
         // alert for no pass password
