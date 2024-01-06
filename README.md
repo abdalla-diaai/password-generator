@@ -25,9 +25,7 @@ The user will be presented with a button {{generate password}}. When clicked, a 
 
 ## Credit
 
-<code>function shuffle(myString)</code> line 128-138 in [/starter/script.js] to randomise the password after generation was obtained from https://gist.github.com/DieTapete/d76d855587c2f7abef7b by DieTapete.
-
-<script src="https://gist.github.com/DieTapete/d76d855587c2f7abef7b.js">source code to shuffle function</script>
+[function shuffle(myVar)] line 128-138 in [/starter/script.js] accepts string as a variable and randomise the password after generation was obtained from (https://gist.github.com/DieTapete/d76d855587c2f7abef7b) DieTapete.
 
 ## License
 
