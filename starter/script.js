@@ -172,7 +172,7 @@ function generatePassword() {
     var passwordOptions = getPasswordOptions();
     var optionsCheck = checkPassWordOptions(passwordOptions).pass;
     var optionsNumber = checkPassWordOptions(passwordOptions).inputOptions
-    
+
     // validate options, at least one type character, chosen for password
     if (optionsCheck) {
         var passWord = getPassword(passwordOptions);
@@ -203,7 +203,7 @@ var generateBtn = document.querySelector('#generate');
 var copyClipboard = document.querySelector('#clipboard');
 var clear = document.querySelector('#clear');
 
-// Write password to the #password input
+// Funtion to write password to the #password input
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector('#password');
@@ -215,20 +215,26 @@ function copyToClipboard() {
     // Get #password input
     var copyTextArea = document.querySelector('#password');
 
-     // Copy password
+    // Copy password
     navigator.clipboard.writeText(copyTextArea.value);
-  
-    // Alert the copied text
-    alert("Password copied to clipboard: " + copyTextArea.value);
-  }
+    if (copyTextArea.value === "") {
+        // if empty
+        alert("Clipboard is empty, nothing to copy");
+    }
+    else {
+        // Alert text is copied
+        alert("Password copied to clipboard: " + copyTextArea.value);
+    }
+}
 
-  function clearTextArea() {
+// Function to clear text area -- optional
+function clearTextArea() {
     var textArea = document.querySelector('#password');
     textArea = "";
-  }
+}
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-  
+
 copyClipboard.addEventListener('click', copyToClipboard);
 copyClipboard.addEventListener('click', copyToClipboard);
 
