@@ -97,7 +97,6 @@ function getPasswordOptions() {
     return { numOptions, charOptions, upperOptions, smallOptions };
 };
 
-
 // Function for getting a random element from an array
 // Function gets first random index then returnning corresponding element from array
 function getRandom(arr) {
