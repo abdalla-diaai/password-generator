@@ -29,7 +29,7 @@ The user will be presented with a button {{generate password}}. When clicked, a 
 
 ## Credit
 
-[function shuffle(myVar)] line 128-138 in my code [JavaScript](/starter/script.js) accepts string as a variable and randomise the password after generation was obtained from [Here](https://gist.github.com/DieTapete/d76d855587c2f7abef7b) DieTapete.
+[function shuffle(myString)](https://github.com/abdalla-diaai/password-generator/blob/3da0b66ba27d3ed4794c16554ea0119e78b68545/starter/script.js#L128C29-L138C2) in my code [JavaScript](/starter/script.js) accepts string as a variable and randomise the password after generation was obtained from [Here](https://gist.github.com/DieTapete/d76d855587c2f7abef7b) DieTapete.
 
 ## License
 

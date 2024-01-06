@@ -124,7 +124,7 @@ function checkPassWordOptions(obj) {
     }
 }
 
-// function to shuffle password after generation
+// Function to shuffle password after generation
 function shuffle(myString) {
     var myStringSplit = myString.split(''),
         myStringLength = myStringSplit.length;
@@ -137,8 +137,8 @@ function shuffle(myString) {
     return myStringSplit.join('');
 }
 
-// function to iterate through object (obj) and get corresponding number of type characters
-function iterateObj(obj) {
+// Function to iterate through password options object (obj) and return corresponding number of characters
+function getPassword(obj) {
     var passwordOptions = "";
     for (const [key, value] of Object.entries(obj)) {
         if (value > 0) {
@@ -173,7 +173,7 @@ function generatePassword() {
     var passwordOptions = getPasswordOptions();
     // validate options, at least one type character, chosen for password
     if (checkPassWordOptions(passwordOptions)) {
-        var passWord = iterateObj(passwordOptions);
+        var passWord = getPassword(passwordOptions);
         // final check for password -- pass
         if (passWord.length >= 8 && passWord.length < 128) {
             return shuffle(passWord);
@@ -181,13 +181,13 @@ function generatePassword() {
         // alert for no pass password
         else {
             alert("Password must be at least 8 characters but no more than 128.");
-            return "Invalid Password.";
+            return "Password length is not accepted.";
         }
     }
-    // error message for no characters chosen
+    // error message for no character type chosen
     else {
         alert("At least one character type should be selected.");
-        return "Invalid Password.";
+        return "Password must contain at least one character type.";
     }
 
 }
