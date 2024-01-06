@@ -172,6 +172,7 @@ function generatePassword() {
     var passwordOptions = getPasswordOptions();
     var optionsCheck = checkPassWordOptions(passwordOptions).pass;
     var optionsNumber = checkPassWordOptions(passwordOptions).inputOptions
+    
     // validate options, at least one type character, chosen for password
     if (optionsCheck) {
         var passWord = getPassword(passwordOptions);
@@ -207,7 +208,9 @@ function writePassword() {
     passwordText.value = password;
 }
 
+
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+  
 
 
