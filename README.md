@@ -13,7 +13,7 @@ The website generates a password from either special character, upper case and s
     * Uppercase
     * Numeric
     * Special characters ($@%&*, etc)
-* Password must contain at least one character type (special character, small letters, large letters or numbers). <em>Preferably the password should contain more than one character type.</em>
+* Password must contain at least one character type (special character, smallcase letters, uppercase letters or numbers). <em>Preferably the password should contain more than one character type.</em>
 
 ## Installation
 
@@ -21,7 +21,7 @@ NA
 
 ## Usage
 
-The user will be presented with a button {{generate password}}. When clicked, a series of prompts will be presented to the user to enter how many special characters, smallcase or uppercase letters or special character the user needs. The enteries must meet the above criteria in the description above. If the user enteries does not cooperate with the criteria or the generated password does not meet the criteria, the user will be presented with alert message describing the issue and a message "invalide password". Once, the password passes the checks, the password will be displayed in the box and written in the page.  
+The user will be presented with a button {{generate password}}. When clicked, a series of prompts will be presented to the user to enter how many special characters, smallcase or uppercase letters or special character the user needs. The enteries must meet the above criteria in the description above. If the user enteries does not cooperate with the criteria or the generated password does not meet the criteria, the user will be presented with alert message describing the issue and a message "invalide password". Once, the password passes the checks, the password will be displayed in the box and written in the page. Screenshot images of functional website can be found [Here](/assets/websiteImages/).
 
 ## Credit
 

@@ -91,7 +91,7 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
     var numOptions = Number(prompt("How many numbers do you need?"));
-    var charOptions = Number(prompt("How many characters do you need?"));
+    var charOptions = Number(prompt("How many special characters do you need?"));
     var upperOptions = Number(prompt("How many capital letters do you need?"));
     var smallOptions = Number(prompt("How many small letters do you need?"));
     return { numOptions, charOptions, upperOptions, smallOptions };
