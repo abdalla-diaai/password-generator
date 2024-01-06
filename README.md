@@ -1,6 +1,6 @@
 # password-generator
 
-a simple website to generate random passwords based on the criteria of the user. 
+A simple website to generate random passwords based on specific criteria set by the user. 
 
 ## Description:
 
