@@ -139,32 +139,32 @@ function shuffle(myString) {
 
 // Function to iterate through password options object (obj) and return password according to corresponding number of characters
 function getPassword(obj) {
-    var passwordOptions = "";
+    var passwordOutput = "";
     for (const [key, value] of Object.entries(obj)) {
         if (value > 0) {
             if (key == "numOptions") {
                 for (var i = 0; i < value; i++) {
-                    passwordOptions += getRandom(numericCharacters);
+                    passwordOutput += getRandom(numericCharacters);
                 }
             }
             if (key == "charOptions") {
                 for (var i = 0; i < value; i++) {
-                    passwordOptions += getRandom(specialCharacters);
+                    passwordOutput += getRandom(specialCharacters);
                 }
             }
             if (key == "upperOptions") {
                 for (var i = 0; i < value; i++) {
-                    passwordOptions += getRandom(upperCasedCharacters);
+                    passwordOutput += getRandom(upperCasedCharacters);
                 }
             }
             if (key == "smallOptions") {
                 for (var i = 0; i < value; i++) {
-                    passwordOptions += getRandom(lowerCasedCharacters);
+                    passwordOutput += getRandom(lowerCasedCharacters);
                 }
             }
         }
     }
-    return passwordOptions;
+    return passwordOutput;
 }
 
 // Function to generate password with user input
