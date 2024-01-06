@@ -198,8 +198,10 @@ function generatePassword() {
 
 }
 
-// Get references to the #generate element
+// Get references to buttons and icons on the page
 var generateBtn = document.querySelector('#generate');
+var copyClipboard = document.querySelector('#clipboard');
+var clear = document.querySelector('#clear');
 
 // Write password to the #password input
 function writePassword() {
@@ -208,9 +210,25 @@ function writePassword() {
     passwordText.value = password;
 }
 
+// Function to copy generated password to clipboard
+function copyToClipboard() {
+    // Get #password input
+    var copyTextArea = document.querySelector('#password');
 
+     // Copy password
+    navigator.clipboard.writeText(copyTextArea.value);
+  
+    // Alert the copied text
+    alert("Password copied to clipboard: " + copyTextArea.value);
+  }
+
+  function clearTextArea() {
+    var textArea = document.querySelector('#password');
+    textArea = "";
+  }
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
   
-
+copyClipboard.addEventListener('click', copyToClipboard);
+copyClipboard.addEventListener('click', copyToClipboard);
 

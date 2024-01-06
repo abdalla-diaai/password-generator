@@ -30,6 +30,33 @@ header {
     color: hsl(206, 17%, 28%);
 }
 
+#clipboard {
+    position: absolute;
+    margin-inline-start: 12px;
+    margin-block-start: 10px;
+}
+
+#clear {
+    position: absolute;
+    margin-inline-start: 10px;
+    margin-block-start: 40px;
+}
+
+#clipboard, #clear {
+    padding: 5px;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    margin-inline-start: 10px;
+    z-index: 1;
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
 .card {
     background-color: hsl(0, 0%, 100%);
     border-radius: 5px;
@@ -52,6 +79,7 @@ header {
 
 .card-body {
     min-height: 100px;
+    position: relative;
 }
 
 .card-footer {
