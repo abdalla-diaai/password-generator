@@ -104,23 +104,23 @@ function getRandom(arr) {
     return arr[randomIndex];
 };
 
-// Function to check the password options to confirm essential criteria
+// Function to check the password options to confirm essential criteria and return two output, number of character type (check) and boolean true (at least one character type) or false (no character type selected)
 function checkPassWordOptions(obj) {
     var check = 0;
-    var optionsValues = []
     for (let value of Object.values(obj)) {
         if (value == 0) {
             check += 1;
         }
-        else {
-            optionsValues.push(value)
-        }
     }
-    if (check == 4) {
+    if (check === 4) {
         return false;
     }
     else {
-        return true;
+        return {
+            pass: true,
+            inputOptions: check,
+        }
+
     }
 }
 
@@ -137,7 +137,7 @@ function shuffle(myString) {
     return myStringSplit.join('');
 }
 
-// Function to iterate through password options object (obj) and return corresponding number of characters
+// Function to iterate through password options object (obj) and return password according to corresponding number of characters
 function getPassword(obj) {
     var passwordOptions = "";
     for (const [key, value] of Object.entries(obj)) {
@@ -163,7 +163,6 @@ function getPassword(obj) {
                 }
             }
         }
-
     }
     return passwordOptions;
 }
@@ -171,11 +170,17 @@ function getPassword(obj) {
 // Function to generate password with user input
 function generatePassword() {
     var passwordOptions = getPasswordOptions();
+    var optionsCheck = checkPassWordOptions(passwordOptions).pass;
+    var optionsNumber = checkPassWordOptions(passwordOptions).inputOptions
     // validate options, at least one type character, chosen for password
-    if (checkPassWordOptions(passwordOptions)) {
+    if (optionsCheck) {
         var passWord = getPassword(passwordOptions);
         // final check for password -- pass
         if (passWord.length >= 8 && passWord.length < 128) {
+            if (optionsNumber === 3) {
+                alert("It is recommended to have a password with more than one character type.");
+                return shuffle(passWord);
+            }
             return shuffle(passWord);
         }
         // alert for no pass password
@@ -199,7 +204,6 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector('#password');
-
     passwordText.value = password;
 }
 
